@@ -34,13 +34,31 @@ const ControlPanel = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleBackgroundColorChange}>
+    <div className="flex justify-center gap-5">
+      <button
+        onClick={handleBackgroundColorChange}
+        className="bg-zinc-950 hover:bg-zinc-900 text-white py-2 px-4 rounded-full"
+      >
         Change Background Color
       </button>
-      <button onClick={changeToBarChart}>Bar Chart</button>
-      <button onClick={changeToLineChart}>Line Chart</button>
-      <button onClick={addRandomValue}>Add random value</button>
+      <button
+        onClick={changeToBarChart}
+        className="bg-zinc-950 hover:bg-zinc-900 text-white py-2 px-4 rounded-full"
+      >
+        Bar Chart
+      </button>
+      <button
+        onClick={changeToLineChart}
+        className="bg-zinc-950 hover:bg-zinc-900 text-white py-2 px-4 rounded-full"
+      >
+        Line Chart
+      </button>
+      <button
+        onClick={addRandomValue}
+        className="bg-zinc-950 hover:bg-zinc-900 text-white py-2 px-4 rounded-full"
+      >
+        Add example week
+      </button>
     </div>
   );
 };

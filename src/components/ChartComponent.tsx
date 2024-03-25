@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { Bar, Line, Doughnut } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,7 +29,7 @@ export const ChartComponent = () => {
   console.log(chartType);
 
   const chartData = {
-    labels: data.map((_, index) => `Item ${index + 1}`),
+    labels: data.map((_, index) => `Week ${index + 1}`),
     datasets: [
       {
         label: "Dataset",
@@ -41,5 +41,9 @@ export const ChartComponent = () => {
 
   const Chart = chartType === "bar" ? Bar : Line;
 
-  return <Chart data={chartData} />;
+  return (
+    <div className="w-full max-w-xl mx-auto p-4 mt-20">
+      <Chart data={chartData} />
+    </div>
+  );
 };
