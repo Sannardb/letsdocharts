@@ -1,12 +1,15 @@
-import { useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addData,
   setBackgroundColor,
   setChartType,
 } from "../features/chartSlice";
+import { RootState } from "../store";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
+  const datasets = useSelector((state: RootState) => state.chart.datasets);
 
   const getRandomColor = () => {
     const r = Math.floor(Math.random() * 256);
@@ -15,9 +18,9 @@ const ControlPanel = () => {
     return `rgb(${r}, ${g}, ${b})`;
   };
 
-  const addRandomValue = () => {
+  const addRandomValueToDatasets = () => {
     const value = Math.floor(Math.random() * 100);
-    dispatch(addData(value));
+    dispatch(addData({ value }));
   };
 
   const handleBackgroundColorChange = () => {
@@ -35,30 +38,12 @@ const ControlPanel = () => {
 
   return (
     <div className="flex justify-center gap-5">
-      <button
-        onClick={handleBackgroundColorChange}
-        className="bg-zinc-950 hover:bg-zinc-900 text-white py-2 px-4 rounded-full"
-      >
+      <button onClick={handleBackgroundColorChange}>
         Change Background Color
       </button>
-      <button
-        onClick={changeToBarChart}
-        className="bg-zinc-950 hover:bg-zinc-900 text-white py-2 px-4 rounded-full"
-      >
-        Bar Chart
-      </button>
-      <button
-        onClick={changeToLineChart}
-        className="bg-zinc-950 hover:bg-zinc-900 text-white py-2 px-4 rounded-full"
-      >
-        Line Chart
-      </button>
-      <button
-        onClick={addRandomValue}
-        className="bg-zinc-950 hover:bg-zinc-900 text-white py-2 px-4 rounded-full"
-      >
-        Add example week
-      </button>
+      <button onClick={changeToBarChart}>Bar Chart</button>
+      <button onClick={changeToLineChart}>Line Chart</button>
+      <button onClick={addRandomValueToDatasets}>Add Example Week</button>
     </div>
   );
 };
